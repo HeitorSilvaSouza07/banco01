@@ -1,6 +1,6 @@
 '''responsavel por uniar as validacoes e emteados das classes pára funcionamento do sistema bnacario da melhor forma possivel'''
 from fastapi import FastAPI
-from app.models.services.banco import Banco
+from app.services.banco import Banco
 
 #delcara app como fast api
 app = FastAPI()
@@ -74,3 +74,12 @@ def deletar(id: int):
         return {"Usuario não deletado"}
     
     return{"Usuaurio deltado com sucesso"}
+
+@app.post("/transferir")
+def transferencia(id1: int , id2: int , valor: float):
+    conta = banco.transição_entre_usuarios(id1, id2, valor)
+    if conta is True:
+        return {"Operação foi um sucesso"}
+    
+    else:
+        return {"operação falhou"}

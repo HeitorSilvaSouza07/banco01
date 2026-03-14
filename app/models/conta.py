@@ -23,8 +23,9 @@ class Conta():
     
     #metodo da classe, depositar dinheiro na conta
     def depositar(self, valor_monetario):
+        saldo = self._saldo 
         self._saldo += valor_monetario 
-        transacao = {"Valor Atual": self._saldo, "valor depositado": valor_monetario}
+        transacao = {"Valor Atual": saldo, "valor depositado": valor_monetario}
         self._historico.append(transacao)
         return self._saldo
 
